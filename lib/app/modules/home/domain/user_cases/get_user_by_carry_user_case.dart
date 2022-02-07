@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:git_stalk/app/modules/home/domain/repositories/search_repository.dart';
+import '../repositories/search_repository.dart';
 
 import '../../../../../core/error/failure.dart';
 import '../../../../../core/user_case/user_case.dart';

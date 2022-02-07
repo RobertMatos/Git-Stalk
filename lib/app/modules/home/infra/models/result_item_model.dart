@@ -1,4 +1,4 @@
-import 'package:git_stalk/app/modules/home/domain/entities/result_item_entity.dart';
+import '../../domain/entities/result_item_entity.dart';
 
 class ResultItemModel extends ResultItemEntity {
   ResultItemModel({

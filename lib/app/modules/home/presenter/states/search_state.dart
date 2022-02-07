@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:git_stalk/app/modules/home/domain/entities/result_item_entity.dart';
+import '../../domain/entities/result_item_entity.dart';
 
 class SearchInitialState extends SearchState {
   @override

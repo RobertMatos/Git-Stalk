@@ -1,5 +1,5 @@
-import 'package:git_stalk/app/modules/home/domain/entities/result_item_entity.dart';
-import 'package:git_stalk/core/user_case/user_case.dart';
+import '../domain/entities/result_item_entity.dart';
+import '../../../../core/user_case/user_case.dart';
 import 'package:mobx/mobx.dart';
 
 import 'states/search_state.dart';
