@@ -9,20 +9,13 @@ part 'home_controller.g.dart';
 class HomeController = HomeControllerBase with _$HomeController;
 
 abstract class HomeControllerBase with Store {
-  UseCase<List<ResultItemEntity>, String> _useCase;
+  final UseCase<List<ResultItemEntity>, String> _useCase;
 
   @observable
   SearchState state = SearchInitialState();
 
-  @observable
-  int counter = 0;
-
   HomeControllerBase({required UseCase<List<ResultItemEntity>, String> useCase})
       : _useCase = useCase;
-
-  Future<void> increment() async {
-    counter = counter + 1;
-  }
 
   Future searchDev(String value) async {
     state = SearchLoadingState();

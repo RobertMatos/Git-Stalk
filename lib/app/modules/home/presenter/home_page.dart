@@ -42,11 +42,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       ),
       body: Observer(
         builder: (_) {
-          print(store.state);
           if (store.state is SearchInitialState) {
             return const Center(
               child: Icon(
-                Icons.account_circle,
+                Icons.person_search,
                 size: 68,
                 color: Colors.grey,
               ),
@@ -55,17 +54,39 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           if (store.state is SearchLoadingState) {
             return const Center(child: CircularProgressIndicator());
           }
+          if (store.state is SearchFailureState) {
+            var state = store.state as SearchFailureState;
+            return Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.error,
+                      size: 68,
+                      color: Colors.red,
+                    ),
+                    Text(state.message)
+                  ]),
+            );
+          }
+          var state = store.state as SearchSuccessState;
           return Padding(
             padding: const EdgeInsets.all(10),
-            child: Text('-'),
+            child: ListView.separated(
+              itemBuilder: (_, index) {
+                var item = state.resultItem[index];
+                return ListTile(
+                  title: Text(item.login ?? '-'),
+                  leading: item.avatarUrl != null
+                      ? Image.network(item.avatarUrl!)
+                      : Container(color: Colors.grey),
+                );
+              },
+              separatorBuilder: (_, __) => const Divider(color: Colors.blue),
+              itemCount: state.resultItem.length,
+            ),
           );
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          store.increment();
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }
